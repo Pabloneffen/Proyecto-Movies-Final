@@ -9,6 +9,6 @@ const genresRouter = require("./routes/genres");
 const moviesRouter = require("./routes/movies");
 
 app.use("/genres", genresRouter);
-app.use("/movies", moviesRouter);
+app.use("/", moviesRouter);
 
 
