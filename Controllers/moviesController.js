@@ -1,7 +1,13 @@
 let db = require("../database/models")
 const moviesController = {
-    index: (req, res) => {
-        res.send("Géneros desde el Controller")
+    index: function(req, res) {
+      
+        db.Peliculas.findAll({
+          include: [{association: "generos"},{association: "actores"}]
+        })
+              .then(function(peliculas){
+                res.render('movies', {peliculas: peliculas});
+              })
     },
     detail: (req, res) => {
         res.send("Detalle desde el Controller")

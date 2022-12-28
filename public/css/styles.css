@@ -1,0 +1,10 @@
+
+  h1{
+    color: aquamarine; padding-left: 2%; 
+  }
+  
+  li {
+    display: flex;
+}
+body{font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;}
+ul{list-style: none;display:flex; flex-direction:column;flex-wrap: wrap}
