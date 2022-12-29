@@ -1,6 +1,5 @@
 let db = require("../database/models")
-const { validationResult } = require('express-validator' );
-const API = 'http://www.omdbapi.com/?apikey=b73b6124&s=';
+
 const moviesController = {
     index: function(req, res) {
       
@@ -11,22 +10,51 @@ const moviesController = {
                 res.render('movies', {peliculas: peliculas});
               })
     },
-    detail: function(req, res, next) {
-      
-        db.Peliculas.findByPk(req.params.id, {
-          include: [{association: "generos"},{association: "actores"}]
-        })
-              .then(function(pelicula){
-                res.render('movie-detail', {Pelicula: pelicula});
-              })
-        },
+    updateForm: function(req, res, next) {
     
-    create: (req, res) =>{
-        db.genero.findAll()
-            .then (function(generos){
-                return res.render("listadoPeliculas", {generos:generos});
-            })
+      db.Peliculas.findByPk(req.params.id)
+            .then(function(pelicula){
+              console.log(pelicula.title)
+              res.render('movie-edit-form', {pelicula: pelicula});
+            })},
+
+    update: function(req, res, next) {
+
+      let errors = validationResult(req);
+      console.log(errors)
+      if (errors.isEmpty()) {
+      db.Peliculas.update({
+        title: req.body.title,
+        rating: req.body.rating,
+        awards: req.body.awards,
+        release_date: req.body.release_date,
+        length: req.body.length
+      },{
+      where: {
+        id: req.params.id
+      }
     }
+    )
+  }else{
+    db.Peliculas.findByPk(req.params.id)
+    .then(function(pelicula){
+      res.render('movie-edit-form', {pelicula: pelicula, errors: errors.mapped(), old: req.body})})
+    }
+    res.redirect('/')
+
+},
+      
+
+      detail: function(req, res, next) {
+      
+      db.Peliculas.findByPk(req.params.id, {
+        include: [{association: "generos"},{association: "actores"}]
+      })
+            .then(function(pelicula){
+              res.render('movies-detail', {pelicula: pelicula});
+            })
+      },
+  
 }
 
 module.exports = moviesController;

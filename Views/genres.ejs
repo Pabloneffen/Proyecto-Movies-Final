@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+<body>
+	
+	<h1>Listado de géneros</h1>
+	
+	<ul>
+		<% for (let i=0; i<generos.length; i++) { %>
+			<li>
+				<a href="/genres/<%=generos[i].id%>"><%= generos[i].name %></a>
+			</li> 
+			<% } %> 
+			<a href="/movies"><button>Regresar</button></a>
+	</ul>
+	
+</body>	
+</html>
