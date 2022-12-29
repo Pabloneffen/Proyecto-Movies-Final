@@ -1,3 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
 <link rel="stylesheet" type="text/css" href="css/styles.css">
+<head class="banner">
+	
+	<h1 class="title">Listado de películas</h1>
+	
+</head>
+<body>
+
+	<ul>
+		<% for (let i=0; i<peliculas.length; i++) { %>
+			<li>
+				<a href="/movies/"><%= peliculas[i].title %></a>	 
+			</li> 
+			<% } %> 
+	</ul>
+
+</body>	
+</html>

@@ -1,4 +1,6 @@
 let db = require("../database/models")
+const { validationResult } = require('express-validator' );
+const API = 'http://www.omdbapi.com/?apikey=b73b6124&s=';
 const moviesController = {
     index: function(req, res) {
       
@@ -9,9 +11,16 @@ const moviesController = {
                 res.render('movies', {peliculas: peliculas});
               })
     },
-    detail: (req, res) => {
-        res.send("Detalle desde el Controller")
-    },
+    detail: function(req, res, next) {
+      
+        db.Peliculas.findByPk(req.params.id, {
+          include: [{association: "generos"},{association: "actores"}]
+        })
+              .then(function(pelicula){
+                res.render('movie-detail', {Pelicula: pelicula});
+              })
+        },
+    
     create: (req, res) =>{
         db.genero.findAll()
             .then (function(generos){

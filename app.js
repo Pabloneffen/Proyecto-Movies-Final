@@ -10,7 +10,10 @@ app.use(express.static(path.join(__dirname, '/public')));
 const genresRouter = require("./routes/genres");
 const moviesRouter = require("./routes/movies");
 
+app.all('/',function(req, res){
+    res.redirect('/movies');
+  })
 app.use("/genres", genresRouter);
-app.use("/", moviesRouter);
+app.use("/movies", moviesRouter);
 
 

@@ -1,10 +1,22 @@
-const genresController = {
-    index: (req, res) => {
-        res.send("Géneros desde el Controller")
-    },
-    detail: (req, res) => {
-        res.send("Detalle desde el Controller")
-}
-}
+let db = require("../database/models")
+let Genero = require("../database/models/Genero")
 
-module.exports = genresController;
+const moviesController = {
+    index: function(req, res, next){
+        db.Generos.findAll({attributes: ['id', 'name']})
+            .then(function(generos){
+              res.render('genres', {generos: generos});
+            })
+      },
+    detail: function(req, res, next) {
+      
+      db.Generos.findByPk(req.params.id)
+            .then(function(genero){
+                console.log(genero)
+              res.render('genre-detail', {genero: genero});
+            })
+      }
+    }
+      
+
+module.exports = moviesController
