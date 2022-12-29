@@ -1,10 +1,18 @@
-
+html{
+  background-image: url(../images/movie.jpg);
+  background-size:contain
+}
+  
   h1{
-    color: rgb(9, 68, 48); padding-left: 2%; 
+    color: rgb(241, 247, 245); padding-left: 2%; 
   }
   
   li {
     display: flex;
+    color: blanchedalmond;
 }
-body{font: 18px Arial, sans-serif;;}
-ul{list-style: none;display:flex; flex-direction:column;flex-wrap: wrap}
+body{font: 18px Arial, sans-serif;color: azure;}
+a:link {
+  color: rgb(235, 233, 162);
+}
+ul{list-style: none;display:flex; flex-direction:column;flex-wrap: wrap; color: azure;}
