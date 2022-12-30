@@ -4,8 +4,9 @@ const moviesController = require("../Controllers/moviesController")
 
 router.get('/', moviesController.index);
 router.get('/:id', moviesController.detail);
-router.get('/:id/update', moviesController.updateForm); //mostrar
-router.post('/:id/update', moviesController.update) //logica
+
+router.get('/create', moviesController.createForm);
+router.post('/create', moviesController.create);
 
 
 module.exports = router;

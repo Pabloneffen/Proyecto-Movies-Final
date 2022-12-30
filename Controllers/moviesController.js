@@ -10,39 +10,30 @@ const moviesController = {
                 res.render('movies', {peliculas: peliculas});
               })
     },
-    updateForm: function(req, res, next) {
-    
-      db.Peliculas.findByPk(req.params.id)
-            .then(function(pelicula){
-              console.log(pelicula.title)
-              res.render('movie-edit-form', {pelicula: pelicula});
-            })},
+    createForm: function(req, res, next) {
+      if(req.cookies.esAdmin!=0){
+        res.render('movie-create-form')
+      }else{res.redirect('/')}
+    },
 
-    update: function(req, res, next) {
-
+    create: function(req, res, next) {
       let errors = validationResult(req);
-      console.log(errors)
-      if (errors.isEmpty()) {
-      db.Peliculas.update({
+      if (errors.isEmpty()&&req.cookies.esAdmin!=0) {
+      db.Peliculas.create({
         title: req.body.title,
         rating: req.body.rating,
         awards: req.body.awards,
         release_date: req.body.release_date,
         length: req.body.length
-      },{
-      where: {
-        id: req.params.id
+      })
+      res.redirect('/')} else {
+        console.log(errors)
+        res.render('movie-create-form', {errors: errors.mapped(), old: req.body})
       }
-    }
-    )
-  }else{
-    db.Peliculas.findByPk(req.params.id)
-    .then(function(pelicula){
-      res.render('movie-edit-form', {pelicula: pelicula, errors: errors.mapped(), old: req.body})})
-    }
-    res.redirect('/')
 
-},
+
+
+  },
       
 
       detail: function(req, res, next) {
