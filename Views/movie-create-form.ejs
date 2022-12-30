@@ -4,7 +4,6 @@
 
 <body>
 	
-
 	<div>
 		<div>
 			<div>
@@ -16,7 +15,7 @@
 				<div class="row product-detail">
 					<br>
 					<div >
-						<label for="title" class="form-label">Título:</label>
+						<label for="title" class="form-label">Título de la película:</label>
 						<input type="text" value="<%= locals.old && old.title %>"id="title" name="title" placeholder="Ej: Harry Potter" class="form-input" required>
 						<% if (locals.errors && errors.title) { %>
 							<p class = "feedback"><%=errors.title.msg%></p><br>
@@ -31,7 +30,7 @@
 					</div>
 					
 					<div >
-						<label for="awards" class="form-label">Premios:</label>
+						<label for="awards" class="form-label">Premios de la película:</label>
 						<input type="number" value="<%= locals.old && old.awards %>" name="awards" id="awards" placeholder="Ej: 2" class="form-input" required>
 						<% if (locals.errors && errors.awards) { %>
 							<p class = "feedback"><%=errors.awards.msg%></p><br>
@@ -64,9 +63,6 @@
 		</div>
 
 	</div>
-	<!-- /todos los productos -->
 
-	<!-- footer -->
-	<!-- /footer -->
 </body>	
 </html>
