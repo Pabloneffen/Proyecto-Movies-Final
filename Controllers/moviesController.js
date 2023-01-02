@@ -81,16 +81,14 @@ const moviesController = {
       
 
       delete: function(req, res, next){
-        db.Actores_Peliculas.destroy({
-          where: {
-            movie_id: req.params.id, 
-          },force: true,
-        })
+
         
-        db.Peliculas.destroy({
-          where: {
-            id: req.params.id, 
-          },force: true,
+        db.Peliculas.update({
+          deleted : 1
+        },{
+        where: {
+          id: req.params.id
+        }
         }).then(()=>{
           return res.redirect('/movies')})
       },

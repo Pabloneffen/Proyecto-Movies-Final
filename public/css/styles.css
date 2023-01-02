@@ -13,6 +13,11 @@ html{
 }
 body{font: 18px Arial, sans-serif;color: azure;}
 a:link {
-  color: rgb(235, 233, 162);
-}
+  color: rgb(235, 233, 162)}
+
+head.banner {
+display: flex;
+flex-direction: row;
+  }
+
 ul{list-style: none;display:flex; flex-direction:column;flex-wrap: wrap; color: azure;}

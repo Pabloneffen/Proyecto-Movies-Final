@@ -1,6 +1,7 @@
 var express = require ("express");
 var router = express.Router ();
 let moviesController = require("../Controllers/moviesController")
+const { check } = require('express-validator');
 
 router.get('/', moviesController.index);
 router.get('/:id', moviesController.detail);
