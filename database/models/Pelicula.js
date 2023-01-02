@@ -26,6 +26,9 @@ module.exports = (sequelize, DataTypes) =>{
         release_date:{
             type: DataTypes.DATE,
             allowNull: false
+        },
+        deleted:{
+            type: DataTypes.INTEGER,
         }
     };
     let config = {

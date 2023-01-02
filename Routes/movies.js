@@ -1,12 +1,18 @@
-const express = require ("express");
-const router = express.Router ();
-const moviesController = require("../Controllers/moviesController")
+var express = require ("express");
+var router = express.Router ();
+let moviesController = require("../Controllers/moviesController")
 
 router.get('/', moviesController.index);
 router.get('/:id', moviesController.detail);
 
 router.get('/create', moviesController.createForm);
 router.post('/create', moviesController.create);
+
+router.get('/:id/update', moviesController.updateForm) 
+router.post('/:id/update', moviesController.update) 
+
+router.get('/:id/delete', moviesController.deleteConfirmation)
+router.post('/:id/delete', moviesController.delete)
 
 
 module.exports = router;
