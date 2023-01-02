@@ -36,6 +36,7 @@ const moviesController = {
         console.log(errors)
         res.render('movie-create-form', {errors: errors.mapped(), old: req.body})
       }
+      
   },
       
     updateForm: function(req, res, next) {
@@ -81,8 +82,6 @@ const moviesController = {
       
 
       delete: function(req, res, next){
-
-        
         db.Peliculas.update({
           deleted : 1
         },{
@@ -93,7 +92,7 @@ const moviesController = {
           return res.redirect('/movies')})
       },
 
-      detail: function(req, res, next) {
+      detail: function(req, res, next) {  
       
       db.Peliculas.findByPk(req.params.id, {
         include: [{association: "generos"},{association: "actores"}]
