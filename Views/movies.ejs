@@ -8,22 +8,22 @@
 </head>
 <body>
 
-	<a href="/users/register"><button>Register</button></a>
+	<a href="/users/register"><button style="background: darkcyan;color:white;">Register</button></a>
 	  
-	<a href="/users/login"><button>Login</button></a>
+	<a href="/users/login"><button style="background: darkcyan;color:white;">Login</button></a>
 	  
 		
 	<ul>
 		<% for (let i=0; i<peliculas.length; i++) { %>
 			<li>
-				<a href="/movies/<%=peliculas[i].id%>"><%= peliculas[i].title %></a>	 
+				<a style="color:rgb(112, 105, 105)" href="/movies/<%=peliculas[i].id%>"><%= peliculas[i].title %></a>	 
 			</li> 
 			<% } %> 
 	</ul>
 
-	<a href="/genres"><button>Géneros</button></a>
+	<a href="/genres"><button style="background: darkcyan;color:white;">Géneros</button></a>
 
-	<a href="/movies/create"><button>Create</button></a>
+	<a href="/movies/create"><button style="background: darkcyan;color:white;">Create</button></a>
 
 </body>	
 </html>
